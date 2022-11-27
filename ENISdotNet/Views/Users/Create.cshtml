@@ -1,0 +1,68 @@
+﻿@using ENISdotNet.ViewModels
+@model UserViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+<h4>User</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="@Model.user!.firstName" class="control-label"></label>
+                    <input asp-for="@Model.user!.firstName" class="form-control" />
+                    <span asp-validation-for="@Model.user!.firstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                    <label asp-for="@Model.user!.lastName" class="control-label"></label>
+                    <input asp-for="@Model.user!.lastName" class="form-control" />
+                    <span asp-validation-for="@Model.user!.lastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                    <label asp-for="@Model.user!.phoneNumber" class="control-label"></label>
+                    <input asp-for="@Model.user!.phoneNumber" class="form-control" />
+                    <span asp-validation-for="@Model.user!.phoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                    <label asp-for="@Model.user!.role" class="control-label"></label>
+                    <input asp-for="@Model.user!.role" class="form-control" />
+                    <span asp-validation-for="@Model.user!.role" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                    <label asp-for="@Model.user!.password" class="control-label"></label>
+                    <input asp-for="@Model.user!.password" class="form-control" />
+                    <span asp-validation-for="@Model.user!.password" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="@Model.user!.SectionId" class="control-label"></label>
+                    <select asp-for="@Model.user!.SectionId" asp-items="@(new SelectList(Model.sections!, "SectionId", "sectionName"))">
+                    </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</body>
+</html>
